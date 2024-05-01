@@ -1,0 +1,60 @@
+
+<html>
+<head>
+
+<title>Task Manager</title>
+</head>
+<body style="background-color: bisque;">
+    <center>
+  <h1>Task Manager</h1>
+  <input type="text" id="taskInput" placeholder="Add a new task">
+  <button onclick="addTask()">Add Task</button>
+  <ul id="taskList"></ul>
+</center>
+  <script>
+   
+    class Task {
+      constructor(description) {
+        this.description = description;
+        
+      }
+
+     
+    }
+
+    // Array to store tasks
+    let tasks = [];
+
+    // Function to add a new task
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const taskDescription = taskInput.value.trim();
+
+      if (taskDescription !== "") {
+        const newTask = new Task(taskDescription);
+        tasks.push(newTask);
+        displayTasks();
+        taskInput.value = "";
+      }
+    }
+
+    // Function to display tasks
+    function displayTasks() {
+      const taskList = document.getElementById("taskList");
+      taskList.innerHTML = "";
+
+ 
+      for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        const taskItem = document.createElement("li");
+        taskItem.textContent = task.description;
+       
+
+        taskList.appendChild(taskItem);
+      }
+    }
+
+
+  </script>
+</body>
+</html>
